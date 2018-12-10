@@ -10,3 +10,25 @@ services:
     environment:
       - DEFAULT_REGION=eu-central-1
       - SERVICES=secretsmanager
+
+    networks:
+      - internal
+
+  app:
+    container_name: app
+    build: ./app
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - localstack
+
+    networks:
+      - internal
+      - web
+
+networks:
+  internal:
+    internal: true
+  web:
