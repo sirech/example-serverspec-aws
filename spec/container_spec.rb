@@ -24,4 +24,18 @@ describe 'Application Container' do
   describe file('app.js') do
     it { is_expected.to be_file }
   end
+
+  describe file('/usr/sbin/entrypoint.sh') do
+    it { is_expected.to be_file }
+  end
+
+  describe 'fetches a secret from ASM' do
+    it { wait_for(secret).to match(/localstack_secret/) }
+  end
+
+  private
+
+  def secret
+    command('curl localhost:3000/secret').stdout
+  end
 end
