@@ -12,4 +12,3 @@ _AWS_ is mocked through [localstack](https://github.com/localstack/localstack). 
 bundle install
 bundle exec rspec spec/container_spec.rb
 ```
--

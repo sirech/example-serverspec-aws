@@ -15,12 +15,7 @@ services:
     container_name: init
     build: ./init
 
-    environment:
-      - AWS_REGION=eu-central-1
-      - AWS_ACCESS_KEY_ID=keyid
-      - AWS_SECRET_ACCESS_KEY=secretkey
-      - AWS_SESSION_TOKEN=token
-      - SECRET_KEY=the_secret
+    env_file: .env
 
     depends_on:
       - localstack
@@ -35,12 +30,7 @@ services:
     ports:
       - "3000:3000"
 
-    environment:
-      - AWS_REGION=eu-central-1
-      - AWS_ACCESS_KEY_ID=keyid
-      - AWS_SECRET_ACCESS_KEY=secretkey
-      - AWS_SESSION_TOKEN=token
-      - SECRET_KEY=the_secret
+    env_file: .env
 
     depends_on:
       - init

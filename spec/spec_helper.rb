@@ -7,7 +7,7 @@ set :backend, :docker
 set :docker_container, 'app'
 
 RSpec.configure do |config|
-  config.wait_timeout = 60 # seconds
+  config.wait_timeout = 15 # seconds
 
   compose = Docker::Compose.new
 
