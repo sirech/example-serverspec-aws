@@ -2,12 +2,12 @@ require_relative 'spec_helper'
 
 describe 'Application Container' do
   describe file('/etc/alpine-release') do
-    its(:content) { is_expected.to match(/3.8.2/) }
+    its(:content) { is_expected.to match(/3.11/) }
   end
 
   describe 'node' do
     describe command('node --version') do
-      its(:stdout) { is_expected.to match(/11.6/) }
+      its(:stdout) { is_expected.to match(/13.6/) }
     end
 
     describe process('node') do
