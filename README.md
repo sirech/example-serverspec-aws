@@ -12,3 +12,30 @@ _AWS_ is mocked through [localstack](https://github.com/localstack/localstack). 
 bundle install
 bundle exec rspec spec/container_spec.rb
 ```
+
+## Run the app manually
+
+```
+docker-compose up
+```
+
+### Checking secrets
+
+`localstack` is exposed when using `docker-compose`. Mock credentials are required
+
+```
+export AWS_ACCESS_KEY_ID=stuff
+export AWS_SECRET_ACCESS_KEY=happens
+```
+
+```
+aws secretsmanager list-secrets --endpoint-url http://localhost:4584 --region eu-central-1
+```
+
+Storing a secret can be done by doing:
+
+```
+aws secretsmanager put-secret-value --endpoint-url http://localhost:4584 --region eu-central-1 --secret-id a_secret --secret-string donttellanybody
+```
+
+
